@@ -68,9 +68,17 @@ public class RNPhotoEditorModule extends ReactContextBaseJavaModule {
 
     //Process Stickers
     ReadableArray stickers = props.getArray("stickers");
+    ReadableArray logos = props.getArray("logos");
     ArrayList<Integer> stickersIntent = new ArrayList<Integer>();
+    ArrayList<String> logosIntent = new ArrayList<String>();
 
-    for (int i = 0;i < stickers.size();i++) {
+
+
+    for(int i = 0; i < logos.size(); i ++) {
+      logosIntent.add(logos.getString(i));
+    }
+    
+    for(int i = 0; i < stickers.size(); i ++) {
       int drawableId = getReactApplicationContext().getResources().getIdentifier(stickers.getString(i), "drawable", getReactApplicationContext().getPackageName());
 
       stickersIntent.add(drawableId);
@@ -98,6 +106,7 @@ public class RNPhotoEditorModule extends ReactContextBaseJavaModule {
     intent.putExtra("colorPickerColors", colorPickerColors);
     intent.putExtra("hiddenControls", hiddenControlsIntent);
     intent.putExtra("stickers", stickersIntent);
+    intent.putExtra("logos", logosIntent);
 
 
     mCancelCallback = onCancel;

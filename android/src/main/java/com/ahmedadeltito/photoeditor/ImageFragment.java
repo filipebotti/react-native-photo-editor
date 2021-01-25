@@ -9,10 +9,16 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import androidx.fragment.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import ui.photoeditor.R;
 /**
@@ -33,15 +39,31 @@ public class ImageFragment extends Fragment implements ImageAdapter.OnImageClick
         TypedArray images = getResources().obtainTypedArray(R.array.photo_editor_photos);
 
         ArrayList<Integer> stickers = (ArrayList<Integer>) getActivity().getIntent().getExtras().getSerializable("stickers");
+        ArrayList<String> logos = (ArrayList<String>) getActivity().getIntent().getExtras().getSerializable("logos");
 
         if (stickers != null && stickers.size() > 0) {
             stickerBitmaps = new ArrayList<>();
+
+            for (int i = 0;i < logos.size();i++) {
+                try {
+                    stickerBitmaps.add(decodeSampleFromURL(logos.get(i)));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
 
             for (int i = 0;i < stickers.size();i++) {
                 stickerBitmaps.add(decodeSampledBitmapFromResource(getActivity().getResources(), stickers.get(i), 120, 120));
             }
         } else {
             stickerBitmaps = new ArrayList<>();
+            for (int i = 0;i < logos.size();i++) {
+                try {
+                    stickerBitmaps.add(decodeSampleFromURL(logos.get(i)));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
             for (int i = 0; i < images.length(); i++) {
                 stickerBitmaps.add(decodeSampledBitmapFromResource(photoEditorActivity.getResources(), images.getResourceId(i, -1), 120, 120));
             }
@@ -69,6 +91,10 @@ public class ImageFragment extends Fragment implements ImageAdapter.OnImageClick
         options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
         options.inJustDecodeBounds = false;
         return BitmapFactory.decodeResource(res, resId, options);
+    }
+
+    public Bitmap decodeSampleFromURL(String imageUrl) throws IOException {
+        return BitmapFactory.decodeStream((InputStream)new URL(imageUrl).getContent());
     }
 
     public int calculateInSampleSize(BitmapFactory.Options options, int reqWidth, int reqHeight) {

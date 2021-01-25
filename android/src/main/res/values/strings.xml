@@ -1,19 +1,19 @@
 <resources>
     <string name="app_name">PhotoEditor</string>
     <string name="title_activity_photo_editor">PhotoEditorActivity</string>
-    <string name="done">Done</string>
-    <string name="save">Save</string>
-    <string name="clear_all">Clear All</string>
+    <string name="done">Pronto</string>
+    <string name="save">Salvar</string>
+    <string name="clear_all">Limpar Tudo</string>
     <string name="camera">Camera</string>
-    <string name="gallery">Gallery</string>
-    <string name="upload_dialog_title">Upload Image</string>
-    <string name="upload_picker_title">Select Picture</string>
-    <string name="directory_create_fail">Failed to create directory</string>
-    <string name="access_media_permissions_msg">To attach photos, we need to access media on your device</string>
-    <string name="continue_txt">Continue</string>
-    <string name="not_now">NOT NOW</string>
-    <string name="media_access_denied_msg">You denied storage access, no photos will be added.</string>
-    <string name="save_image_succeed">Image saved</string>
+    <string name="gallery">Galeria</string>
+    <string name="upload_dialog_title">Carregar Imagem</string>
+    <string name="upload_picker_title">Selecionar Imagem</string>
+    <string name="directory_create_fail">Falha ao criar diretório</string>
+    <string name="access_media_permissions_msg">Para colocar fotos, precisamos do acesso ao armazenamento.</string>
+    <string name="continue_txt">Continuar</string>
+    <string name="not_now">NÃO AGORA</string>
+    <string name="media_access_denied_msg">Você negou acesso ao armazenamento, nenhuma foto vai ser adicionada.</string>
+    <string name="save_image_succeed">Imagem salva</string>
 
     <string name="ic_close">"\ue918"</string>
     <string name="ic_text">"\ue945"</string>
@@ -24,9 +24,9 @@
     <string name="ic_continue">"\ue948"</string>
     <string name="ic_delete">"\ue92c"</string>
     <string name="ic_crop">&#xf565;</string>
-    <string name="choose_from_gallery">Choose From Gallery</string>
-    <string name="choose_from_camera">Choose From Camera</string>
-    <string name="undo">Undo</string>
-    <string name="erase">Erase</string>
+    <string name="choose_from_gallery">Escolher da Galeria</string>
+    <string name="choose_from_camera">Escolher da Camera</string>
+    <string name="undo">Desfazer</string>
+    <string name="erase">Borracha</string>
 
 </resources>

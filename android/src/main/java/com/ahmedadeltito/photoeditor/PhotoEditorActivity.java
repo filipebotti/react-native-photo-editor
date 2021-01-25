@@ -181,9 +181,17 @@ public class PhotoEditorActivity extends AppCompatActivity implements View.OnCli
 
         ImageFragment imageFragment = new ImageFragment();
         ArrayList stickers = (ArrayList<Integer>) getIntent().getExtras().getSerializable("stickers");
+        ArrayList logos = (ArrayList<String>) getIntent().getExtras().getSerializable("logos");
         if (stickers != null && stickers.size() > 0) {
             Bundle bundle = new Bundle();
             bundle.putSerializable("stickers", stickers);
+
+            imageFragment.setArguments(bundle);
+        }
+
+        if(logos.size() > 0) {
+            Bundle bundle = new Bundle();
+            bundle.putSerializable("logos", logos);
 
             imageFragment.setArguments(bundle);
         }

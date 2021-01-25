@@ -64,11 +64,19 @@ RCT_EXPORT_METHOD(Edit:(nonnull NSDictionary *)props onDone:(RCTResponseSenderBl
 
         // Process Stickers
         NSArray *stickers = [props objectForKey: @"stickers"];
-        NSMutableArray *imageStickers = [[NSMutableArray alloc] initWithCapacity:stickers.count];
+        NSArray *logos = [props objectForKey: @"logos"]
+        NSMutableArray *imageStickers = [[NSMutableArray alloc] initWithCapacity:(stickers.count + logos.count)];
 
         for (NSString *sticker in stickers) {
             [imageStickers addObject: [UIImage imageNamed: sticker]];
         }
+        
+        for (NSString *logo in logos) {
+            NSURL *url = [NSURL URLWithString:sticker];
+            NSData *data = [NSData dataWithContentsOfURL:url];
+            [imageStickers addObject: [UIImage imageWithData:data]];
+        }       
+        
 
         photoEditor.stickers = imageStickers;
 
