@@ -64,7 +64,7 @@ RCT_EXPORT_METHOD(Edit:(nonnull NSDictionary *)props onDone:(RCTResponseSenderBl
 
         // Process Stickers
         NSArray *stickers = [props objectForKey: @"stickers"];
-        NSArray *logos = [props objectForKey: @"logos"]
+        NSArray *logos = [props objectForKey: @"logos"];
         NSMutableArray *imageStickers = [[NSMutableArray alloc] initWithCapacity:(stickers.count + logos.count)];
 
         for (NSString *sticker in stickers) {
@@ -72,7 +72,7 @@ RCT_EXPORT_METHOD(Edit:(nonnull NSDictionary *)props onDone:(RCTResponseSenderBl
         }
         
         for (NSString *logo in logos) {
-            NSURL *url = [NSURL URLWithString:sticker];
+            NSURL *url = [NSURL URLWithString:logo];
             NSData *data = [NSData dataWithContentsOfURL:url];
             [imageStickers addObject: [UIImage imageWithData:data]];
         }       
